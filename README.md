@@ -1,73 +1,198 @@
-# React + TypeScript + Vite
+# Preproute Test Management Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript based Test Management Application developed as part of the Preproute Frontend Developer Assessment.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This application allows users to create, manage, preview, and publish tests through a structured 5-page workflow.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Authentication
 
-## Expanding the ESLint configuration
+* User login with validation
+* Error handling for invalid credentials
+* Protected navigation flow
+* Token management using Local Storage
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Dashboard
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* View all available tests
+* Create new tests
+* Edit existing tests
+* Delete tests
+* View test information
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Create Test
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Test Name
+* Subject
+* Topic
+* Sub Topic
+* Difficulty Level
+* Marking Scheme
+* Total Time
+* Total Marks
+* Save as Draft functionality
+* Form validation
+
+### Question Management
+
+* Add MCQ questions
+* Four options per question
+* Select correct answer
+* Explanation field
+* Difficulty selection
+* Topic and Sub-topic selection
+* Media URL support
+* Edit questions
+* Delete questions
+* Minimum one question validation
+
+### Preview & Publish
+
+* Test overview
+* Question preview
+* Edit test details
+* Edit questions
+* Publish test
+* Success notification
+* Redirect to dashboard after publishing
+
+---
+
+## Technology Stack
+
+* React
+* TypeScript
+* Vite
+* React Router DOM
+* Axios
+* React Hook Form
+* CSS
+
+---
+
+## Project Structure
+
+```text
+src/
+│
+├── components/
+│   ├── Header
+│   ├── Sidebar
+│   ├── Layout
+│
+├── pages/
+│   ├── Login
+│   ├── Dashboard
+│   ├── CreateTest
+│   ├── Questions
+│   └── Publish
+│
+├── services/
+│   ├── api
+│   ├── auth
+│   └── testService
+│
+├── styles/
+│
+└── App.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Installation & Setup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clone the repository:
+
+```bash
+git clone https://github.com/Mahak-agrawal05/preproute-test-management-app.git
 ```
+
+Navigate to project directory:
+
+```bash
+cd preproute-test-management-app
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run development server:
+
+```bash
+npm run dev
+```
+
+Application will be available at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+Preview production build:
+
+```bash
+npm run preview
+```
+
+---
+
+## Assessment Requirements Covered
+
+### Page 1 – Login
+
+* Login form
+* Validation
+* Error handling
+* Redirect on success
+
+### Page 2 – Dashboard
+
+* Test listing
+* Create Test
+* Edit Test
+* Delete Test
+* View Test
+
+### Page 3 – Create/Edit Test
+
+* Test details form
+* Validation
+* Save as Draft
+
+### Page 4 – Add Questions
+
+* Add/Edit/Delete Questions
+* Correct Option Selection
+* Explanation
+* Media URL
+* Validation
+
+### Page 5 – Preview & Publish
+
+* Test Overview
+* Questions Preview
+* Edit Navigation
+* Publish Flow
+* Success Notification
+
+---
+
+## Author
+
+**Mahak Agrawal**
+
+Frontend Developer Assessment Submission for Preproute.
