@@ -1,0 +1,40 @@
+.header{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+
+  margin-bottom:30px;
+}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.bell{
+  font-size:22px;
+  cursor:pointer;
+}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.avatar{
+  width:40px;
+  height:40px;
+
+  border-radius:50%;
+
+  background:#5d82f3;
+  color:white;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-weight:bold;
+}

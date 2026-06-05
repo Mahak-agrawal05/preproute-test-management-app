@@ -1,0 +1,185 @@
+.create-test-container {
+  flex: 1;
+  padding: 30px;
+  background: #fff;
+}
+
+.page-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Heading */
+
+.create-test-container h2 {
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Breadcrumb */
+
+.breadcrumb {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Tabs */
+
+.tabs {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.tabs button {
+  padding: 12px 24px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.tabs button:hover {
+  background: #f5f7ff;
+}
+
+.active-tab {
+  background: #5d82f3 !important;
+  color: white;
+}
+
+/* Main Form */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px 40px;
+}
+
+/* Form Fields */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #374151;
+  font-size: 15px;
+}
+
+.form-group input,
+.form-group select {
+  height: 50px;
+  padding: 0 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #5d82f3;
+}
+
+/* Difficulty */
+
+.difficulty-group {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+  height: 50px;
+}
+
+.difficulty-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+/* Marking Scheme */
+
+.section-title {
+  margin-top: 35px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.marking-grid {
+  display: grid;
+  grid-template-columns: 140px 140px 140px 220px 220px;
+  gap: 20px;
+  align-items: end;
+}
+
+/* Buttons */
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.cancel-btn {
+  min-width: 120px;
+  height: 48px;
+  border: 1px solid #5d82f3;
+  background: white;
+  color: #5d82f3;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.next-btn {
+  min-width: 120px;
+  height: 48px;
+  border: none;
+  background: #5d82f3;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.next-btn:hover,
+.cancel-btn:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.draft-btn {
+  background: #ffffff;
+  color: #5d82f3;
+  border: 1px solid #5d82f3;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.draft-btn:hover {
+  background: #f5f8ff;
+}
