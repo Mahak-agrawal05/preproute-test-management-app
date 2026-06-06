@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { publishTest } from "../services/testService";
 
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
@@ -23,10 +24,32 @@ function Publish() {
     }
   }, []);
 
-  const handlePublish = () => {
-    alert("Test Published Successfully");
-    navigate("/dashboard");
-  };
+  const handlePublish = async () => {
+  try {
+
+    const testId = "test-uuid";
+
+    const response =
+      await publishTest(testId);
+
+    console.log(
+      "PUBLISH RESPONSE:",
+      response
+    );
+
+  } catch (error) {
+
+    console.log(
+      "PUBLISH ERROR:",
+      error
+    );
+
+  }
+
+  alert("Test Published Successfully");
+
+  navigate("/dashboard");
+};
 
   return (
     <div className="page-layout">

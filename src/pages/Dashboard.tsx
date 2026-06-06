@@ -1,45 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { getTests } from "../services/testService";
 
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 
 import "../styles/Dashboard.css";
 
+interface Test {
+  id: string;
+  name: string;
+  subject: string;
+  topics: string[];
+  status: string;
+  created_at: string;
+}
+
 function Dashboard() {
   const navigate = useNavigate();
 
-const [tests, setTests] = useState([
-  {
-    id: 1,
-    name: "English Grammar Test",
-    subject: "English",
-    status: "Draft",
-    createdDate: "05 Jun 2026",
-  },
-  {
-    id: 2,
-    name: "Mathematics Mock Test",
-    subject: "Mathematics",
-    status: "Live",
-    createdDate: "04 Jun 2026",
-  },
-]);
+  const [tests, setTests] = useState<Test[]>([]);
 
-const handleDelete = (id: number) => {
+  useEffect(() => {
+    getTests()
+      .then((res) => {
+        console.log("TESTS:", res);
 
-  const confirmDelete = window.confirm(
-    "Are you sure you want to delete this test?"
-  );
+        setTests(res.data);
+      })
+      .catch((err) => {
+        console.log("TEST ERROR:", err);
+      });
+  }, []);
 
-  if (!confirmDelete) return;
+  const handleDelete = (id: string) => {
 
-  const updatedTests = tests.filter(
-    (test) => test.id !== id
-  );
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this test?"
+    );
 
-  setTests(updatedTests);
-};
+    if (!confirmDelete) return;
+
+    const updatedTests = tests.filter(
+      (test) => test.id !== id
+    );
+
+    setTests(updatedTests);
+  };
 
   return (
     <div className="page-layout">
@@ -81,7 +88,8 @@ const handleDelete = (id: number) => {
                 </p>
 
                 <p>
-                  <strong>Created:</strong> {test.createdDate}
+                  <strong>Created:</strong>{" "}
+                  {new Date(test.created_at).toLocaleDateString()}
                 </p>
 
               </div>
@@ -97,14 +105,18 @@ const handleDelete = (id: number) => {
 
                 <button
                   className="edit-btn"
-                  onClick={() => navigate("/create-test")}
+                  onClick={() =>
+                    navigate(`/create-test/${test.id}`)
+                  }
                 >
                   Edit
                 </button>
 
                 <button
                   className="delete-btn"
-                  onClick={() => handleDelete(test.id)}
+                  onClick={() =>
+                    navigate(`/create-test/${test.id}`)
+                  }
                 >
                   Delete
                 </button>

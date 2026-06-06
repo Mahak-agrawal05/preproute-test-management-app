@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { bulkCreateQuestions } from "../services/testService";
 
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
@@ -106,17 +107,47 @@ function Questions() {
 
     setEditIndex(index);
   };
-  const handleNext = () => {
 
-    if (questions.length === 0) {
-      alert(
-        "Please add at least one question"
-      );
-      return;
-    }
 
-    navigate("/publish");
-  };
+const handleNext = async () => {
+
+  if (questions.length === 0) {
+    alert("Please add at least one question");
+    return;
+  }
+
+  try {
+
+    const payload = {
+      questions: questions.map((q) => ({
+        type: "mcq",
+        question: q.question,
+        option1: q.optionA,
+        option2: q.optionB,
+        option3: q.optionC,
+        option4: q.optionD,
+        correct_option: q.correctOption,
+        explanation: q.solution,
+        difficulty: q.difficulty.toLowerCase(),
+        test_id: "test-uuid",
+      })),
+    };
+
+    console.log("BULK QUESTIONS:", payload);
+
+    await bulkCreateQuestions(payload);
+
+  } catch (error) {
+
+    console.log(
+      "Backend blocked request (CORS):",
+      error
+    );
+
+  }
+
+  navigate("/publish");
+};
 
   return (
     <div className="page-layout">

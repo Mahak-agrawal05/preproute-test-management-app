@@ -15,6 +15,11 @@ function App() {
 
       <Route path="/create-test" element={<CreateTest />} />
 
+      <Route
+  path="/create-test/:id"
+  element={<CreateTest />}
+/>
+
       <Route path="/questions" element={<Questions />} />
 
       <Route path="/publish" element={<Publish />} />
