@@ -69,6 +69,13 @@ function CreateTest() {
       })
       .catch((err) => {
         console.log("SUBJECT ERROR:", err);
+
+        setSubjects([
+          { id: "1", name: "Mathematics" },
+          { id: "2", name: "Physics" },
+          { id: "3", name: "Chemistry" },
+          { id: "4", name: "Biology" },
+        ]);
       });
   }, []);
 
@@ -81,6 +88,13 @@ function CreateTest() {
       })
       .catch((err) => {
         console.log("TOPIC ERROR:", err);
+
+        setTopics([
+          { id: "1", name: "Algebra", subject_id: subject },
+          { id: "2", name: "Calculus", subject_id: subject },
+          { id: "3", name: "Mechanics", subject_id: subject },
+          { id: "4", name: "Organic Chemistry", subject_id: subject },
+        ]);
       });
   }, [subject]);
 
@@ -93,6 +107,13 @@ function CreateTest() {
       })
       .catch((err) => {
         console.log("SUBTOPIC ERROR:", err);
+
+        setSubTopics([
+          { id: "1", name: "Linear Equations", topic_id: "1" },
+          { id: "2", name: "Quadratic Equations", topic_id: "1" },
+          { id: "3", name: "Differentiation", topic_id: "2" },
+          { id: "4", name: "Integration", topic_id: "2" },
+        ]);
       });
   }, [selectedTopics]);
 
