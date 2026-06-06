@@ -25,6 +25,7 @@
 .questions-topbar .breadcrumb {
   font-size: 13px;
   color: #6b7280;
+   margin-left: 200px;
 }
  
 .publish-btn {
@@ -688,4 +689,22 @@
   .button-row { flex-direction: column; }
   .right-buttons { width: 100%; }
   .cancel-btn, .add-question-btn, .next-btn { width: 100%; }
+}
+
+.floating-logo {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  z-index: 100;
+
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-logo img {
+  width: 140px;
+  height: auto;
 }

@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { bulkCreateQuestions } from "../services/testService";
 
-import Sidebar from "../components/Sidebar";
+import QuestionLayoutSidebar from "../components/QuestionLayoutSidebar";
 import Header from "../components/Header";
 
 import "../styles/Questions.css";
+import logoImage from "../assets/logo.png";
 
 /* ── Trash icon ── */
 const TrashIcon = () => (
@@ -19,21 +20,21 @@ const TrashIcon = () => (
 
 /* ── Toolbar buttons config ── */
 const TOOLBAR = [
-  { label: "I",  style: { fontStyle: "italic", fontWeight: 400 } },
-  { label: "B",  style: { fontWeight: 700 } },
-  { label: "U",  style: { textDecoration: "underline" } },
-  { label: "S̶",  style: { textDecoration: "line-through" } },
+  { label: "I", style: { fontStyle: "italic", fontWeight: 400 } },
+  { label: "B", style: { fontWeight: 700 } },
+  { label: "U", style: { textDecoration: "underline" } },
+  { label: "S̶", style: { textDecoration: "line-through" } },
   null, // divider
   { label: "⬛", style: {} },
-  { label: "≡",  style: {} },
-  { label: "≡",  style: {} },
-  { label: "≡",  style: {} },
-  { label: "☰",  style: {} },
+  { label: "≡", style: {} },
+  { label: "≡", style: {} },
+  { label: "≡", style: {} },
+  { label: "☰", style: {} },
   null,
-  { label: "⊞",  style: {} },
-  { label: "—",  style: {} },
+  { label: "⊞", style: {} },
+  { label: "—", style: {} },
   { label: "🖼", style: {} },
-  { label: "fx",  style: {} },
+  { label: "fx", style: {} },
 ];
 
 function Questions() {
@@ -149,7 +150,11 @@ function Questions() {
 
   return (
     <div className="page-layout">
-      <Sidebar />
+
+      <div className="floating-logo">
+        <img src={logoImage} alt="PrepRoute" />
+      </div>
+      <QuestionLayoutSidebar />
 
       <div className="questions-container">
         <Header />
@@ -252,17 +257,17 @@ function Questions() {
 
               <div className="chapter-stats">
                 <span className="chapter-stat">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
                   60 Min
                 </span>
                 <span className="stat-divider" />
                 <span className="chapter-stat">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2"><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
                   50 Q's
                 </span>
                 <span className="stat-divider" />
                 <span className="chapter-stat">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
                   250 Marks
                 </span>
               </div>
@@ -276,7 +281,7 @@ function Questions() {
               <div className="question-header-actions">
                 <button className="mcq-btn" onClick={addQuestion}>+ MCQ</button>
                 <button className="csv-btn">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
                   CSV
                 </button>
               </div>

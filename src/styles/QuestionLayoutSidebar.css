@@ -1,0 +1,99 @@
+.question-layout-sidebar {
+  width: clamp(48px, 5vw, 64px);
+  min-height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Left accent bar matching Figma indigo strip */
+.question-layout-sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #4f46e5;
+  border-radius: 0 2px 2px 0;
+}
+
+.question-layout-logo {
+  padding: 16px 0;
+}
+
+.question-layout-logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.question-layout-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 100px;
+  width: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  transition: background 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-btn:hover:not(.active) {
+  background: #f3f4f6;
+  color: #4f46e5;
+}
+
+.icon-btn.active {
+  background: #4f46e5;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
+}
+
+/* Responsive: shrink slightly on small screens */
+@media (max-width: 640px) {
+  .question-layout-sidebar {
+    width: 48px;
+  }
+
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .question-layout-menu {
+    margin-top: 72px;
+    gap: 6px;
+  }
+}
