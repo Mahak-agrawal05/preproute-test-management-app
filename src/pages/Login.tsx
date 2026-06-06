@@ -4,6 +4,7 @@ import { login } from "../services/auth";
 
 import "./../styles/Login.css";
 import loginIllustration from "../assets/login-illustration.png";
+import logoImage from "../assets/logo.png"; // Add your logo image asset here
 import { useNavigate } from "react-router-dom";
 
 
@@ -28,34 +29,35 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-  try {
-    const response = await login(userId, password);
+    try {
+      const response = await login(userId, password);
 
-    const { token, user } = response.data;
+      const { token, user } = response.data;
 
-    localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(user));
-
-    navigate("/dashboard");
-  } catch (error) {
-    // Temporary fallback for assessment/demo
-    if (
-      userId === "vedant-admin" &&
-      password === "vedant123"
-    ) {
-      localStorage.setItem("token", "dummy-jwt-token");
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ userId })
-      );
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
 
       navigate("/dashboard");
-      return;
-    }
+    } catch (error) {
+      // Temporary fallback for assessment/demo
+      if (
+        userId === "vedant-admin" &&
+        password === "vedant123"
+      ) {
+        localStorage.setItem("token", "dummy-jwt-token");
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ userId })
+        );
 
-    alert("Invalid User ID or Password");
-  }
-};
+        navigate("/dashboard");
+        return;
+      }
+
+      alert("Invalid User ID or Password");
+    }
+  };
+
   useEffect(() => {
     console.log("User ID changed:", userId);
   }, [userId]);
@@ -67,53 +69,72 @@ function Login() {
   return (
     <div className="login-container">
 
+      {/* LEFT SIDE — illustration panel */}
       <div className="login-left">
         <img
           src={loginIllustration}
           alt="illustration"
+          className="login-illustration"
         />
       </div>
 
+      {/* RIGHT SIDE — form panel */}
       <div className="login-right">
 
         <div className="login-card">
 
-          <h2 className="logo">PrepRoute</h2>
+          {/* Logo — use img tag; falls back gracefully if asset missing */}
+          <div className="logo-wrapper">
+            <img
+              src={logoImage}
+              alt="PrepRoute"
+              className="logo-img"
+              onError={(e) => {
+                // Fallback: hide broken img and show text logo
+                (e.currentTarget as HTMLImageElement).style.display = "none";
+                const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                if (fallback) fallback.style.display = "block";
+              }}
+            />
+            {/* Text fallback — hidden by default, shown if image fails */}
+            <span className="logo-text-fallback">PrepRoute</span>
+          </div>
 
-          <h3>Login</h3>
+          <h3 className="login-heading">Login</h3>
 
-          <p>
+          <p className="login-subtext">
             Use your company provided Login credentials
           </p>
 
           <form>
-            <label>User ID</label>
 
-            <input
-              type="text"
-              placeholder="Enter User ID"
-              value={userId}
-              onChange={(e) => setUserId(e.target.value)}
-            />
-
-            <br />
-            <br />
-
-            <label>Password</label>
-
-            <input
-              type="password"
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <br />
-
-            <div className="forgot-password">
-              Forgot Password?
+            <div className="field-group">
+              <label htmlFor="userId">User ID</label>
+              <input
+                id="userId"
+                type="text"
+                placeholder="Enter User ID"
+                value={userId}
+                onChange={(e) => setUserId(e.target.value)}
+              />
             </div>
 
-            <br />
+            <div className="field-group">
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <div className="forgot-password-row">
+              <span className="forgot-password">
+                Forgot password?
+              </span>
+            </div>
 
             <button
               className="login-btn"
@@ -124,6 +145,7 @@ function Login() {
             </button>
 
           </form>
+
         </div>
 
       </div>
