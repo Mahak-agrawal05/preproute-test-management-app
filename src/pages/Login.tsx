@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import api from "../services/api";
 import { login } from "../services/auth";
 
-import "./../styles/Login.css";
+import "./../styles/login.css";
 import loginIllustration from "../assets/login-illustration.png";
 import logoImage from "../assets/logo.png"; // Add your logo image asset here
 import { useNavigate } from "react-router-dom";
