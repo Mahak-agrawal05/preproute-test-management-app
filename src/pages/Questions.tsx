@@ -55,7 +55,7 @@ function Questions() {
   const [questions, setQuestions] = useState<any[]>([]);
 
   const [correctOption, setCorrectOption] = useState("");
-  const [mediaUrl, setMediaUrl] = useState("");
+  const [mediaUrl] = useState("");
 
   const addQuestion = () => {
     const newQuestion = {
