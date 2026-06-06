@@ -25,7 +25,6 @@ function Dashboard() {
     getTests()
       .then((res) => {
         console.log("TESTS:", res);
-
         setTests(res.data);
       })
       .catch((err) => {
@@ -34,102 +33,99 @@ function Dashboard() {
   }, []);
 
   const handleDelete = (id: string) => {
-
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this test?"
     );
-
     if (!confirmDelete) return;
-
-    const updatedTests = tests.filter(
-      (test) => test.id !== id
-    );
-
+    const updatedTests = tests.filter((test) => test.id !== id);
     setTests(updatedTests);
+  };
+
+  const getStatusClass = (status: string) => {
+    switch (status?.toLowerCase()) {
+      case "published": return "status-badge published";
+      case "draft":     return "status-badge draft";
+      case "scheduled": return "status-badge scheduled";
+      default:          return "status-badge";
+    }
   };
 
   return (
     <div className="page-layout">
-
       <Sidebar />
 
       <div className="dashboard-container">
-
         <Header />
 
         <div className="dashboard-top">
-
-          <h1>All Tests</h1>
-
+          <h1 className="dashboard-title">All Tests</h1>
           <button
             className="create-btn"
             onClick={() => navigate("/create-test")}
           >
             + Create New Test
           </button>
-
         </div>
 
         <div className="test-list">
+          {tests.length === 0 && (
+            <div className="empty-state">
+              <p>No tests found. Create your first test to get started.</p>
+            </div>
+          )}
 
           {tests.map((test) => (
             <div className="test-card" key={test.id}>
-
               <div className="test-info">
+                <h3 className="test-name">{test.name}</h3>
 
-                <h3>{test.name}</h3>
+                <div className="test-meta">
+                  <span className="meta-item">
+                    <span className="meta-label">Subject</span>
+                    <span className="meta-value">{test.subject}</span>
+                  </span>
 
-                <p>
-                  <strong>Subject:</strong> {test.subject}
-                </p>
+                  <span className="meta-divider" />
 
-                <p>
-                  <strong>Status:</strong> {test.status}
-                </p>
+                  <span className="meta-item">
+                    <span className="meta-label">Created</span>
+                    <span className="meta-value">
+                      {new Date(test.created_at).toLocaleDateString()}
+                    </span>
+                  </span>
 
-                <p>
-                  <strong>Created:</strong>{" "}
-                  {new Date(test.created_at).toLocaleDateString()}
-                </p>
+                  <span className="meta-divider" />
 
+                  <span className={getStatusClass(test.status)}>
+                    {test.status}
+                  </span>
+                </div>
               </div>
 
               <div className="action-buttons">
-
                 <button
-                  className="view-btn"
+                  className="action-btn view-btn"
                   onClick={() => navigate("/publish")}
                 >
                   View
                 </button>
-
                 <button
-                  className="edit-btn"
-                  onClick={() =>
-                    navigate(`/create-test/${test.id}`)
-                  }
+                  className="action-btn edit-btn"
+                  onClick={() => navigate(`/create-test/${test.id}`)}
                 >
                   Edit
                 </button>
-
                 <button
-                  className="delete-btn"
-                  onClick={() =>
-                    navigate(`/create-test/${test.id}`)
-                  }
+                  className="action-btn delete-btn"
+                  onClick={() => handleDelete(test.id)}
                 >
                   Delete
                 </button>
-
               </div>
-
             </div>
           ))}
-
         </div>
-
       </div>
-
     </div>
   );
 }
