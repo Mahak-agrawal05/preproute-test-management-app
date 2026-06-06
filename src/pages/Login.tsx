@@ -8,117 +8,128 @@ import { useNavigate } from "react-router-dom";
 
 
 const fetchData = async () => {
-    try {
-        const response = await api.get(
-            "https://jsonplaceholder.typicode.com/users"
-        );
+  try {
+    const response = await api.get(
+      "https://jsonplaceholder.typicode.com/users"
+    );
 
-        console.log(response.data);
-    } catch (error) {
-        console.log(error);
-    }
+    console.log(response.data);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 
 function Login() {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [userId, setUserId] = useState("");
-    const [password, setPassword] = useState("");
-    
-const handleLogin = () => {
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
 
-  if (!userId || !password) {
-    alert("Please fill all fields");
-    return;
-  }
+  const handleLogin = async () => {
+  try {
+    const response = await login(userId, password);
 
-  if (
-    userId !== "vedant-admin" ||
-    password !== "vedant123"
-  ) {
+    const { token, user } = response.data;
+
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
+
+    navigate("/dashboard");
+  } catch (error) {
+    // Temporary fallback for assessment/demo
+    if (
+      userId === "vedant-admin" &&
+      password === "vedant123"
+    ) {
+      localStorage.setItem("token", "dummy-jwt-token");
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ userId })
+      );
+
+      navigate("/dashboard");
+      return;
+    }
+
     alert("Invalid User ID or Password");
-    return;
   }
-
-  navigate("/dashboard");
 };
+  useEffect(() => {
+    console.log("User ID changed:", userId);
+  }, [userId]);
 
-    useEffect(() => {
-        console.log("User ID changed:", userId);
-    }, [userId]);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+  return (
+    <div className="login-container">
 
-   return (
-  <div className="login-container">
+      <div className="login-left">
+        <img
+          src={loginIllustration}
+          alt="illustration"
+        />
+      </div>
 
-    <div className="login-left">
-      <img
-        src={loginIllustration}
-        alt="illustration"
-      />
-    </div>
+      <div className="login-right">
 
-    <div className="login-right">
+        <div className="login-card">
 
-      <div className="login-card">
+          <h2 className="logo">PrepRoute</h2>
 
-        <h2 className="logo">PrepRoute</h2>
+          <h3>Login</h3>
 
-        <h3>Login</h3>
+          <p>
+            Use your company provided Login credentials
+          </p>
 
-        <p>
-          Use your company provided Login credentials
-        </p>
+          <form>
+            <label>User ID</label>
 
-<form>
-        <label>User ID</label>
+            <input
+              type="text"
+              placeholder="Enter User ID"
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
+            />
 
-<input
-  type="text"
-  placeholder="Enter User ID"
-  value={userId}
-  onChange={(e) => setUserId(e.target.value)}
-/>
+            <br />
+            <br />
 
-<br/>
-<br/>
+            <label>Password</label>
 
-        <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
 
-<input
-  type="password"
-  placeholder="Enter Password"
-  value={password}
-  onChange={(e) => setPassword(e.target.value)}
-/>
-<br/>
+            <div className="forgot-password">
+              Forgot Password?
+            </div>
 
-<div className="forgot-password">
-  Forgot Password?
-</div>
+            <br />
 
-<br/>
+            <button
+              className="login-btn"
+              type="button"
+              onClick={handleLogin}
+            >
+              Login
+            </button>
 
-        <button
-  className="login-btn"
-  type="button"
-  onClick={handleLogin}
->
-  Login
-</button>
+          </form>
+        </div>
 
-</form>
       </div>
 
     </div>
-
-  </div>
-);
+  );
 }
 
 export default Login;
