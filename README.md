@@ -191,6 +191,12 @@ npm run preview
 
 ---
 
+## API Integration
+
+All APIs from the provided documentation have been integrated.
+
+Note: The provided staging backend currently returns CORS errors from localhost, which prevents full end-to-end API testing. Frontend integration for all endpoints has been completed according to the API specification.
+
 ## Author
 
 **Mahak Agrawal**
