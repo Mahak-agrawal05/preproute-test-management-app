@@ -159,10 +159,11 @@ function CreateTest() {
         response = await createTest(payload);
       }
       console.log(response);
-      navigate("/questions");
+      // navigate("/questions");
     } catch (error) {
       console.error("CREATE TEST ERROR:", error);
     }
+    navigate("/questions");
   };
 
   const onSaveAsDraft = async (data: any) => {
