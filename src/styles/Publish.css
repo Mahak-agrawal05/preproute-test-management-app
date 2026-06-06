@@ -1,162 +1,564 @@
+/* =========================================
+   PAGE LAYOUT
+   ========================================= */
+ 
+.page-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+ 
+/* =========================================
+   PUBLISH CONTAINER
+   ========================================= */
+ 
 .publish-container {
   flex: 1;
-  padding: 30px;
-  background: #fff;
+  padding: 24px 32px 40px;
+  background: #ffffff;
+  overflow-y: auto;
+  min-width: 0;
 }
-
-.publish-container h1 {
-  font-size: 32px;
-  margin-bottom: 25px;
-}
-
-/* Breadcrumb */
-
+ 
 .breadcrumb {
   color: #6b7280;
-  font-size: 14px;
-  margin-bottom: 15px;
+  font-size: 13px;
+  margin-bottom: 6px;
 }
-
-/* Tabs */
-
-.publish-tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 25px;
+ 
+.publish-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 24px;
 }
-
-.publish-tabs button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #f3f4f6;
-  font-weight: 500;
-}
-
-.active-tab {
-  background: #5d82f3 !important;
-  color: white;
-}
-
-/* Card */
-
-.publish-card {
-  max-width: 700px;
-  padding: 25px;
+ 
+/* =========================================
+   CHAPTER CARD
+   ========================================= */
+ 
+.chapter-card {
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background: #fafafa;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
-
-.publish-card h3 {
-  margin-bottom: 20px;
+ 
+.chapter-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
 }
-
-/* Radio Options */
-
-.publish-card label {
+ 
+.chapter-badge-row {
+  display: flex;
+  gap: 8px;
+}
+ 
+.chapter-wise-badge {
+  background: #1e293b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+ 
+.edit-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #6b7280;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+ 
+.edit-icon-btn:hover {
+  background: #f3f4f6;
+}
+ 
+.chapter-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+ 
+.difficulty-badge {
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+ 
+.chapter-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+ 
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+ 
+.meta-label {
+  color: #6b7280;
+  min-width: 78px;
+  font-weight: 500;
+}
+ 
+.meta-sep {
+  color: #9ca3af;
+}
+ 
+.meta-value {
+  color: #374151;
+  font-weight: 500;
+}
+ 
+.topic-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+ 
+.topic-tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 20px;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+ 
+.chapter-stats {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 14px;
+  flex-wrap: wrap;
+  gap: 0;
+}
+ 
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  padding: 0 20px;
+}
+ 
+.stat-icon {
+  font-size: 15px;
+}
+ 
+.stat-divider {
+  width: 1px;
+  height: 20px;
+  background: #d1d5db;
+  flex-shrink: 0;
+}
+ 
+/* =========================================
+   QUESTIONS PREVIEW
+   ========================================= */
+ 
+.questions-preview {
+  margin-bottom: 28px;
+}
+ 
+.questions-preview h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #111827;
+}
+ 
+.question-preview-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  background: #ffffff;
+}
+ 
+.question-preview-card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #111827;
+}
+ 
+.question-preview-card p {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 4px;
+}
+ 
+/* =========================================
+   TABS  — underline style like Figma
+   ========================================= */
+ 
+.publish-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e5e7eb;
+}
+ 
+.tab-btn {
+  padding: 10px 24px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+ 
+.tab-btn:hover {
+  color: #374151;
+}
+ 
+.active-tab {
+  color: #4f6ef7 !important;
+  border-bottom: 3px solid #4f6ef7 !important;
+  background: transparent !important;
+}
+ 
+/* =========================================
+   PUBLISH CARD  (Live Until / Schedule)
+   ========================================= */
+ 
+.publish-card {
+  width: 100%;
+  padding: 28px 32px 32px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #ffffff;
+  margin-bottom: 32px;
+  box-sizing: border-box;
+}
+ 
+.live-until-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+ 
+.live-until-desc {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 0;
+}
+ 
+/* ── Radio grid: 2 columns, row order: Always|1wk, 2wk|3wk, 1mo|Custom ── */
+.radio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 22px;
+  column-gap: 60px;
+  margin-top: 24px;
+}
+ 
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #374151;
   cursor: pointer;
 }
-
-/* Form Fields */
-
+ 
+.radio-option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #4f6ef7;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+ 
+.radio-label {
+  font-weight: 500;
+}
+ 
+/* ── Custom Duration expansion ── */
+.custom-duration-row {
+  margin-top: 24px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 22px;
+}
+ 
+.custom-input-group {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+ 
+.custom-date-field,
+.custom-time-field {
+  position: relative;
+  flex: 1;
+}
+ 
+.custom-date-field input,
+.custom-time-field input {
+  width: 100%;
+  height: 48px;
+  padding: 0 40px 0 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #374151;
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;
+}
+ 
+.custom-date-field input:focus,
+.custom-time-field input:focus {
+  border-color: #4f6ef7;
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.1);
+}
+ 
+.field-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+}
+ 
+.custom-confirm-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+ 
+.cancel-btn {
+  padding: 10px 22px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #374151;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+ 
+.cancel-btn:hover {
+  background: #f3f4f6;
+}
+ 
+.confirm-btn {
+  padding: 10px 28px;
+  background: #4f6ef7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+ 
+.confirm-btn:hover {
+  opacity: 0.9;
+}
+ 
+/* =========================================
+   SCHEDULE FORM
+   ========================================= */
+ 
 .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
-
+ 
 .form-group label {
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
 }
-
+ 
 .form-group input,
 .form-group select {
   height: 48px;
-  padding: 0 12px;
+  padding: 0 14px;
   border: 1px solid #d1d5db;
-  border-radius: 8px;
+  border-radius: 10px;
   outline: none;
+  font-size: 14px;
+  color: #374151;
+  background: #fff;
 }
-
+ 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #5d82f3;
+  border-color: #4f6ef7;
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.1);
 }
-
-/* Buttons */
-
+ 
+/* =========================================
+   BOTTOM BUTTON ROW
+   ========================================= */
+ 
 .button-row {
   display: flex;
   justify-content: flex-end;
-  gap: 15px;
-  margin-top: 30px;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
 }
-
-.cancel-btn {
-  padding: 12px 24px;
-  border: 1px solid #5d82f3;
-  background: white;
-  color: #5d82f3;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.next-btn {
-  padding: 12px 24px;
-  border: none;
-  background: #5d82f3;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.cancel-btn:hover,
-.next-btn:hover {
-  opacity: 0.9;
-}
-
-.chapter-card{
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:20px;
-  margin-bottom:25px;
-  background:#fafafa;
-}
-
-.chapter-card h3{
-  margin-bottom:10px;
-}
-
-.chapter-card p{
-  margin-bottom:5px;
-}
-
-.chapter-stats{
-  display:flex;
-  gap:20px;
-  margin-top:15px;
-  font-weight:500;
-}
-
-.edit-btn {
+ 
+/* All outline buttons share one class */
+.outline-btn {
+  padding: 11px 24px;
+  border: 1.5px solid #4f6ef7;
   background: #ffffff;
-  color: #5d82f3;
-  border: 1px solid #5d82f3;
-  padding: 12px 20px;
+  color: #4f6ef7;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 14px;
   font-weight: 600;
-  transition: 0.3s;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
 }
-
-.edit-btn:hover {
-  background: #f5f8ff;
+ 
+.outline-btn:hover {
+  background: #f0f4ff;
+}
+ 
+/* Filled primary button */
+.publish-btn {
+  padding: 11px 28px;
+  border: none;
+  background: #4f6ef7;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+ 
+.publish-btn:hover {
+  opacity: 0.9;
+}
+ 
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+ 
+@media (max-width: 900px) {
+  .radio-grid {
+    column-gap: 32px;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .publish-container {
+    padding: 16px 18px 32px;
+  }
+ 
+  .publish-title {
+    font-size: 22px;
+  }
+ 
+  .publish-card {
+    padding: 20px;
+  }
+ 
+  .radio-grid {
+    grid-template-columns: 1fr;
+    row-gap: 18px;
+  }
+ 
+  .custom-input-group {
+    flex-direction: column;
+  }
+ 
+  .chapter-stats {
+    justify-content: flex-start;
+  }
+ 
+  .stat-item {
+    padding: 4px 12px;
+  }
+ 
+  .button-row {
+    justify-content: stretch;
+    gap: 10px;
+  }
+ 
+  .button-row .outline-btn,
+  .button-row .publish-btn {
+    flex: 1;
+    text-align: center;
+  }
+ 
+  .chapter-card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .chapter-stats {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+ 
+  .stat-divider {
+    display: none;
+  }
+ 
+  .stat-item {
+    padding: 0 8px;
+  }
+ 
+  .tab-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+ 
+  .button-row {
+    flex-direction: column;
+  }
+ 
+  .button-row .outline-btn,
+  .button-row .publish-btn {
+    width: 100%;
+  }
 }
