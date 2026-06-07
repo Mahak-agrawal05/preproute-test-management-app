@@ -45,12 +45,12 @@ function Sidebar() {
     <div className="sidebar">
       {/* Logo */}
       <div className="sidebar-logo">
-  <img
-    src={logoImage}
-    alt="PrepRoute"
-    className="sidebar-logo-img"
-  />
-</div>
+        <img
+          src={logoImage}
+          alt="PrepRoute"
+          className="sidebar-logo-img"
+        />
+      </div>
 
       {/* Nav */}
       <nav className="sidebar-menu">
@@ -66,7 +66,7 @@ function Sidebar() {
               onClick={() => navigate(item.path)}
             >
               {item.icon}
-              {item.label}
+              <span className="sidebar-item-label">{item.label}</span>
             </div>
           );
         })}

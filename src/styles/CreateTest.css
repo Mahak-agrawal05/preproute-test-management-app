@@ -2,45 +2,53 @@
 .page-layout {
   display: flex;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
   background: #f9fafb;
 }
  
 .create-test-container {
   flex: 1;
   background: #fff;
-  padding: 20px 30px 30px;
-  min-width: 0;
+  padding: 1.25rem 1.875rem 1.875rem;
+  min-width: 0;           /* prevents flex child overflow */
+  overflow-x: hidden;
 }
  
 /* ── Breadcrumb ── */
 .breadcrumb {
   color: #6b7280;
-  font-size: 13px;
-  margin-bottom: 20px;
+  font-size: 0.8125rem;
+  margin-bottom: 1.25rem;
+  word-break: break-word;
 }
  
 /* ── Tabs ── */
 .tabs {
   display: inline-flex;
+  flex-wrap: wrap;        /* wraps on very small screens */
   gap: 0;
-  padding: 4px;
+  padding: 0.25rem;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
   background: #fff;
+  max-width: 100%;
 }
  
 .tabs button {
-  width: 120px;
-  height: 36px;
+  width: 7.5rem;          /* 120px → rem */
+  height: 2.25rem;        /* 36px → rem */
   border: none;
   background: transparent;
   border-radius: 7px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: #6b7280;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  touch-action: manipulation;
 }
  
 .tabs button:hover:not(.active-tab) {
@@ -52,39 +60,51 @@
   color: #fff !important;
 }
  
-/* ── Form Grid ── */
+/* ── Form Grid — 2-col desktop ── */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px 30px;
+  gap: 1.125rem 1.875rem;
 }
  
 /* ── Form Group ── */
 .form-group {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
  
 .form-group label {
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: #374151;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
  
 .form-group input,
 .form-group select {
-  height: 42px;
+  height: 2.625rem;       /* 42px → rem */
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  padding: 0 14px;
-  font-size: 14px;
+  padding: 0 0.875rem;
+  font-size: 0.875rem;
   color: #374151;
   background: #fff;
   outline: none;
   transition: border-color 0.15s;
   appearance: none;
   -webkit-appearance: none;
+  width: 100%;
+  /* Prevent iOS auto-zoom (font < 16px) */
+  font-size: max(0.875rem, 16px);
+}
+ 
+/* Restore smaller font on pointer (desktop) devices */
+@media (hover: hover) {
+  .form-group input,
+  .form-group select {
+    font-size: 0.875rem;
+  }
 }
  
 /* Custom dropdown arrow */
@@ -94,7 +114,7 @@
  
 .select-wrapper select {
   width: 100%;
-  padding-right: 36px;
+  padding-right: 2.25rem;
   cursor: pointer;
 }
  
@@ -102,7 +122,7 @@
   content: "";
   pointer-events: none;
   position: absolute;
-  right: 14px;
+  right: 0.875rem;
   top: 50%;
   transform: translateY(-50%);
   width: 0;
@@ -123,39 +143,45 @@
 }
  
 /* ── Difficulty Radio Group ── */
-.difficulty-group{
-  display:flex;
-  gap:40px;
-  align-items:center;
+.difficulty-group {
+  display: flex;
+  flex-wrap: wrap;        /* wraps if space is tight */
+  gap: 1.5rem;
+  align-items: center;
 }
-
-.radio-label{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  cursor:pointer;
+ 
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #374151;
+  white-space: nowrap;
 }
-
-.radio-label input{
-  width:18px !important;
-  height:18px !important;
-  accent-color:#5d82f3;
-  cursor:pointer;
+ 
+.radio-label input {
+  width: 1.125rem !important;
+  height: 1.125rem !important;
+  accent-color: #5d82f3;
+  cursor: pointer;
+  flex-shrink: 0;
 }
  
 /* ── Marking Scheme ── */
 .section-title {
-  margin-top: 32px;
-  margin-bottom: 16px;
-  font-size: 16px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #111827;
 }
  
+/* 5-col on large screens */
 .marking-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1.6fr 1.6fr;
-  gap: 16px;
+  gap: 1rem;
 }
  
 /* Spinner-style number inputs for marking */
@@ -167,11 +193,11 @@
  
 .marking-input-wrapper input[type="number"] {
   width: 100%;
-  height: 46px;
+  height: 2.875rem;       /* 46px → rem */
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  padding: 0 32px 0 14px;
-  font-size: 14px;
+  padding: 0 2rem 0 0.875rem;
+  font-size: 0.875rem;
   color: #374151;
   background: #fff;
   outline: none;
@@ -181,7 +207,7 @@
 .marking-input-wrapper input[type="number"]::-webkit-inner-spin-button,
 .marking-input-wrapper input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
-  height: 46px;
+  height: 2.875rem;
   cursor: pointer;
 }
  
@@ -194,21 +220,24 @@
 .button-row {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
-  margin-top: 24px;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
 }
  
 .cancel-btn {
-  width: 120px;
-  height: 42px;
+  min-width: 7.5rem;      /* 120px → min-width so it can grow */
+  height: 2.625rem;
   border: 1px solid #d1d5db;
   background: #fff;
   color: #374151;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
+  touch-action: manipulation;
+  min-height: 44px;
 }
  
 .cancel-btn:hover {
@@ -217,16 +246,18 @@
 }
  
 .draft-btn {
-  width: 140px;
-  height: 42px;
+  min-width: 8.75rem;     /* 140px → min-width */
+  height: 2.625rem;
   background: #fff;
   border: 1px solid #5d82f3;
   color: #5d82f3;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.15s;
+  touch-action: manipulation;
+  min-height: 44px;
 }
  
 .draft-btn:hover {
@@ -234,16 +265,18 @@
 }
  
 .next-btn {
-  width: 120px;
-  height: 42px;
+  min-width: 7.5rem;
+  height: 2.625rem;
   background: #5d82f3;
   border: none;
   color: #fff;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.15s;
+  touch-action: manipulation;
+  min-height: 44px;
 }
  
 .next-btn:hover {
@@ -253,61 +286,117 @@
 /* ── Error ── */
 .error {
   color: #ef4444;
-  font-size: 12px;
-  margin-top: 4px;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
 }
  
-/* ── Responsive ── */
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+══════════════════════════════════════════ */
+ 
+/* ── Tablet landscape / small desktop (768px – 1100px) ── */
 @media (max-width: 1100px) {
   .marking-grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
  
-@media (max-width: 992px) {
+/* ── Tablet portrait (768px – 1023px) ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .create-test-container {
+    padding: 1rem 1.25rem 1.5rem;
+  }
+ 
   .form-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;   /* keep 2-col on tablet */
+    gap: 1rem 1.25rem;
   }
  
   .marking-grid {
-    grid-template-columns: 1fr 1fr;
-  }
- 
-  .button-row {
-    flex-wrap: wrap;
-  }
-}
- 
-@media (max-width: 768px) {
-  .create-test-container {
-    padding: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
   }
  
   .tabs button {
-    width: 90px;
+    width: 6.5rem;
+  }
+}
+ 
+/* ── Narrow tablet / large phone (600px – 767px) ── */
+@media (max-width: 767px) {
+ 
+  .page-layout {
+    flex-direction: column;  /* sidebar stacks above content */
+  }
+ 
+  .create-test-container {
+    padding: 1rem 1rem 1.5rem;
+  }
+ 
+  .tabs {
+    width: 100%;
+    justify-content: stretch;
+  }
+ 
+  .tabs button {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+ 
+  .form-grid {
+    grid-template-columns: 1fr;   /* single column on mobile */
+    gap: 1rem;
+  }
+ 
+  .difficulty-group {
+    gap: 1rem;
   }
  
   .marking-grid {
     grid-template-columns: 1fr 1fr;
-  }
- 
-  .difficulty-group {
-    gap: 16px;
   }
  
   .button-row {
     flex-direction: column;
+    align-items: stretch;
   }
  
   .cancel-btn,
   .draft-btn,
   .next-btn {
     width: 100%;
+    min-width: unset;
+    text-align: center;
   }
 }
  
-@media (max-width: 480px) {
+/* ── Small phones (320px – 479px) ── */
+@media (max-width: 479px) {
+  .create-test-container {
+    padding: 0.75rem 0.75rem 1.5rem;
+  }
+ 
   .marking-grid {
     grid-template-columns: 1fr;
+  }
+ 
+  .difficulty-group {
+    gap: 0.75rem;
+  }
+ 
+  .section-title {
+    font-size: 0.9375rem;
+  }
+}
+ 
+/* ── Very small phones (up to 359px) ── */
+@media (max-width: 359px) {
+  .tabs button {
+    font-size: 0.75rem;
+    height: 2rem;
+  }
+ 
+  .breadcrumb {
+    font-size: 0.75rem;
   }
 }

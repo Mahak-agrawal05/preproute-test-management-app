@@ -1,18 +1,23 @@
+/* =========================================
+   QUESTION LAYOUT SIDEBAR — BASE (desktop/tablet)
+   ========================================= */
+ 
 .question-layout-sidebar {
   width: clamp(48px, 5vw, 64px);
   min-height: 100vh;
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
-
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   flex-shrink: 0;
+  box-sizing: border-box;
 }
-
-/* Left accent bar matching Figma indigo strip */
+ 
+/* Left accent bar — vertical mode */
 .question-layout-sidebar::before {
   content: "";
   position: absolute;
@@ -23,28 +28,30 @@
   background: #4f46e5;
   border-radius: 0 2px 2px 0;
 }
-
+ 
 .question-layout-logo {
   padding: 16px 0;
 }
-
+ 
 .question-layout-logo img {
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
-
+ 
+/* ── Icon menu — vertical ── */
 .question-layout-menu {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin-top: 100px;
+  margin-top: clamp(24px, 10vh, 100px);
   width: 100%;
   padding: 0 8px;
   box-sizing: border-box;
 }
-
+ 
+/* ── Icon buttons ── */
 .icon-btn {
   width: 40px;
   height: 40px;
@@ -58,42 +65,150 @@
   color: #6b7280;
   transition: background 0.15s ease, color 0.15s ease;
   flex-shrink: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* Touch-friendly — ensure minimum tap target */
+  min-width: 44px;
+  min-height: 44px;
 }
-
+ 
 .icon-btn svg {
   width: 20px;
   height: 20px;
+  flex-shrink: 0;
 }
-
+ 
 .icon-btn:hover:not(.active) {
   background: #f3f4f6;
   color: #4f46e5;
 }
-
+ 
 .icon-btn.active {
   background: #4f46e5;
   color: #ffffff;
   box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
 }
-
-/* Responsive: shrink slightly on small screens */
-@media (max-width: 640px) {
+ 
+/* =========================================
+   TABLET (768px – 1023px) — still vertical
+   ========================================= */
+ 
+@media (max-width: 1023px) and (min-width: 769px) {
   .question-layout-sidebar {
-    width: 48px;
+    width: clamp(48px, 5vw, 56px);
   }
-
+ 
+  .question-layout-menu {
+    margin-top: clamp(24px, 8vh, 80px);
+  }
+}
+ 
+/* =========================================
+   MOBILE (≤ 768px) — flip to horizontal bar
+   ========================================= */
+ 
+@media (max-width: 768px) {
+  .question-layout-sidebar {
+    /* Switch from left column to top bar */
+    width: 100%;
+    min-height: unset;
+    height: 56px;
+ 
+    flex-direction: row;
+    align-items: center;
+ 
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+ 
+    /* Allow horizontal scroll if items overflow (many items) */
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* Hide scrollbar visually but keep it functional */
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE/Edge */
+  }
+ 
+  .question-layout-sidebar::-webkit-scrollbar {
+    display: none;                /* Chrome/Safari */
+  }
+ 
+  /* Swap the accent bar from left-edge vertical strip
+     to a bottom-edge horizontal strip                  */
+  .question-layout-sidebar::before {
+    top: unset;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px 2px 0 0;
+  }
+ 
+  /* ── Menu becomes a horizontal row ── */
+  .question-layout-menu {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+ 
+    /* Reset vertical spacing */
+    margin-top: 0;
+    width: auto;           /* shrink-wrap to content */
+    min-width: 100%;       /* but stretch to fill bar when few items */
+    padding: 0 12px;
+ 
+    /* Keep items in one line — horizontal scroll handles overflow */
+    flex-wrap: nowrap;
+  }
+ 
+  /* ── Icon buttons — touch-friendly horizontal sizing ── */
   .icon-btn {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 8px;
+    /* Prevent buttons from shrinking when bar is narrow */
+    flex-shrink: 0;
   }
-
+ 
+  .icon-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+ 
+  /* Active indicator: bottom border instead of left border */
+  .icon-btn.active {
+    background: #4f46e5;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+  }
+}
+ 
+/* =========================================
+   VERY SMALL PHONES (≤ 359px)
+   ========================================= */
+ 
+@media (max-width: 359px) {
+  .question-layout-sidebar {
+    height: 52px;
+  }
+ 
+  .question-layout-menu {
+    padding: 0 8px;
+    gap: 2px;
+  }
+ 
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 6px;
+  }
+ 
   .icon-btn svg {
     width: 18px;
     height: 18px;
-  }
-
-  .question-layout-menu {
-    margin-top: 72px;
-    gap: 6px;
   }
 }
