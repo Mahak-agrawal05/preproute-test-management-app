@@ -2,16 +2,26 @@
 
 Frontend Developer Assessment Submission built using React, TypeScript, Vite, and React Router.
 
+## Live Demo
+
+**Vercel Deployment:** _______________________________
+
+## GitHub Repository
+
+**Repository Link:** _______________________________
+
 ## Features
 
 * User Authentication (Login & Validation)
-* Dashboard (View, Edit, Delete Tests)
+* Protected Routes
+* Dashboard for Viewing Tests
 * Create Test Form with Validation
+* Edit Existing Tests
+* Delete Tests
 * Question Management (Add, Edit, Delete MCQs)
 * Preview & Publish Workflow
-* Protected Routes
 * API Integration using Axios
-* Responsive UI
+* Fully Responsive Design (Mobile, Tablet, Desktop)
 
 ## Tech Stack
 
@@ -23,34 +33,50 @@ Frontend Developer Assessment Submission built using React, TypeScript, Vite, an
 * React Hook Form
 * CSS
 
-## Setup
+## Installation & Setup
 
 ```bash
 git clone https://github.com/Mahak-agrawal05/preproute-test-management-app.git
+
 cd preproute-test-management-app
+
 npm install
+
 npm run dev
 ```
 
-Application runs at:
+Application will run at:
 
-```text
+```bash
 http://localhost:5173
 ```
 
-## Assessment Pages Covered
+## Assessment Modules Implemented
 
-* Login
+* Login Page
 * Dashboard
-* Create/Edit Test
+* Create Test
+* Edit Test
 * Question Management
-* Preview & Publish
+* Preview Test
+* Publish Test
 
-## Note
+## Responsive Design
 
-API integration has been implemented according to the provided documentation. However, the staging backend currently returns CORS/network-related errors from localhost, which prevents complete end-to-end testing of some backend-dependent flows.
+The application has been optimized for:
 
-The frontend workflow, routing, validations, and UI implementation have been completed and are ready to work with a functioning backend environment.
+* Mobile Devices
+* Tablets
+* Laptops
+* Desktop Screens
+
+## API Integration Note
+
+API integration has been implemented according to the provided assessment requirements and endpoint documentation.
+
+The provided staging backend currently returns CORS/network-related restrictions for localhost environments, which may prevent complete end-to-end testing of some backend-dependent features during local development.
+
+Frontend routing, validation, state handling, UI workflows, and API integration logic have been fully implemented and are ready to work with a properly configured backend environment.
 
 ## Author
 
