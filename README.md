@@ -4,11 +4,11 @@ Frontend Developer Assessment Submission built using React, TypeScript, Vite, an
 
 ## Live Demo
 
-**Vercel Deployment:** _______________________________
+**Vercel Deployment:** https://preproute-test-management-app-ecru.vercel.app/
 
 ## GitHub Repository
 
-**Repository Link:** _______________________________
+**Repository Link:** https://github.com/Mahak-agrawal05/preproute-test-management-app
 
 ## Features
 
