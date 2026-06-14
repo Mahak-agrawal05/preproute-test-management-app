@@ -45,7 +45,7 @@ function CreateTest() {
   const [numberOfQuestions, setNumberOfQuestions] = useState("");
   const [totalMarks, setTotalMarks] = useState("");
 
-  const [testType, setTestType] = useState("Chapter Wise");
+  const [testType, setTestType] = useState("chapterwise");
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [topics, setTopics] = useState<Topic[]>([]);
   const [subTopics, setSubTopics] = useState<SubTopic[]>([]);
@@ -148,23 +148,29 @@ function CreateTest() {
     status,
   });
 
-  const onSubmit = async (data: any) => {
-    try {
-      const payload = buildPayload(data, null);
-      console.log("CREATE TEST:", payload);
-      let response;
-      if (id) {
-        response = await updateTest(id, payload);
-      } else {
-        response = await createTest(payload);
-      }
-      console.log(response);
-      // navigate("/questions");
-    } catch (error) {
-      console.error("CREATE TEST ERROR:", error);
+const onSubmit = async (data: any) => {
+  try {
+    const payload = buildPayload(data, "draft");
+    console.log("CREATE TEST:", payload);
+
+    let response;
+
+    if (id) {
+      response = await updateTest(id, payload);
+    } else {
+      response = await createTest(payload);
     }
+
+    console.log(response);
+
+    // Navigate ONLY after successful API call
     navigate("/questions");
-  };
+
+  } catch (error) {
+    console.error("CREATE TEST ERROR:", error);
+    alert("Failed to create test. Please try again.");
+  }
+};
 
   const onSaveAsDraft = async (data: any) => {
     try {
@@ -198,25 +204,25 @@ function CreateTest() {
         {/* Tabs */}
         <div className="tabs">
           <button
-            className={testType === "Chapter Wise" ? "active-tab" : ""}
-            onClick={() => setTestType("Chapter Wise")}
-          >
-            Chapterwise
-          </button>
+  className={testType === "chapterwise" ? "active-tab" : ""}
+  onClick={() => setTestType("chapterwise")}
+>
+  Chapterwise
+</button>
 
-          <button
-            className={testType === "PYQ" ? "active-tab" : ""}
-            onClick={() => setTestType("PYQ")}
-          >
-            PYQ
-          </button>
+<button
+  className={testType === "pyq" ? "active-tab" : ""}
+  onClick={() => setTestType("pyq")}
+>
+  PYQ
+</button>
 
-          <button
-            className={testType === "Mock Test" ? "active-tab" : ""}
-            onClick={() => setTestType("Mock Test")}
-          >
-            Mock Test
-          </button>
+<button
+  className={testType === "mocktest" ? "active-tab" : ""}
+  onClick={() => setTestType("mocktest")}
+>
+  Mock Test
+</button>
         </div>
 
         {/* Basic Details */}
