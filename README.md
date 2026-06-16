@@ -72,11 +72,12 @@ The application has been optimized for:
 
 ## API Integration Note
 
-API integration has been implemented according to the provided assessment requirements and endpoint documentation.
+API integration has been implemented as per the provided documentation and requirements.
 
-The provided staging backend currently returns CORS/network-related restrictions for localhost environments, which may prevent complete end-to-end testing of some backend-dependent features during local development.
+During final verification, browser-based requests to the staging backend encountered CORS-related restrictions in both local and deployed environments. However, the API endpoints were successfully tested separately during development.
 
-Frontend routing, validation, state handling, UI workflows, and API integration logic have been fully implemented and are ready to work with a properly configured backend environment.
+The frontend implementation, validation, routing, UI workflows, and API integration logic have been completed and are ready to work with the configured backend environment.
+
 
 ## Author
 
