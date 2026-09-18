@@ -258,3 +258,45 @@
     padding: 2rem 0.75rem;
   }
 }
+
+
+.demo-access-box {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border: 1px solid #dbe3f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  font-size: 13px;
+}
+
+.demo-access-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.demo-access-box p {
+  margin: 4px 0;
+}
+
+.demo-access-box span {
+  font-family: monospace;
+}
+
+.demo-access-box small {
+  display: block;
+  margin-top: 8px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Authentication Note */
+.security-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 18px;
+  font-size: 12px;
+  color: #64748b;
+}

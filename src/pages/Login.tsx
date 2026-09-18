@@ -4,9 +4,8 @@ import { login } from "../services/auth";
 
 import "./../styles/login.css";
 import loginIllustration from "../assets/login-illustration.png";
-import logoImage from "../assets/logo.png"; // Add your logo image asset here
+import logoImage from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-
 
 const fetchData = async () => {
   try {
@@ -20,9 +19,7 @@ const fetchData = async () => {
   }
 };
 
-
 function Login() {
-
   const navigate = useNavigate();
 
   const [userId, setUserId] = useState("");
@@ -39,15 +36,19 @@ function Login() {
 
       navigate("/dashboard");
     } catch (error) {
-      // Temporary fallback for assessment/demo
+      // Portfolio demo account
       if (
-        userId === "vedant-admin" &&
-        password === "vedant123"
+        userId === "portfolio-demo" &&
+        password === "PrepRoute@2026"
       ) {
-        localStorage.setItem("token", "dummy-jwt-token");
+        localStorage.setItem("token", "demo-jwt-token");
+
         localStorage.setItem(
           "user",
-          JSON.stringify({ userId })
+          JSON.stringify({
+            userId: "portfolio-demo",
+            role: "demo"
+          })
         );
 
         navigate("/dashboard");
@@ -73,7 +74,7 @@ function Login() {
       <div className="login-left">
         <img
           src={loginIllustration}
-          alt="illustration"
+          alt="PrepRoute login illustration"
           className="login-illustration"
         />
       </div>
@@ -83,21 +84,28 @@ function Login() {
 
         <div className="login-card">
 
-          {/* Logo — use img tag; falls back gracefully if asset missing */}
+          {/* Logo */}
           <div className="logo-wrapper">
             <img
               src={logoImage}
               alt="PrepRoute"
               className="logo-img"
               onError={(e) => {
-                // Fallback: hide broken img and show text logo
-                (e.currentTarget as HTMLImageElement).style.display = "none";
-                const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                if (fallback) fallback.style.display = "block";
+                (e.currentTarget as HTMLImageElement).style.display =
+                  "none";
+
+                const fallback =
+                  e.currentTarget.nextElementSibling as HTMLElement;
+
+                if (fallback) {
+                  fallback.style.display = "block";
+                }
               }}
             />
-            {/* Text fallback — hidden by default, shown if image fails */}
-            <span className="logo-text-fallback">PrepRoute</span>
+
+            <span className="logo-text-fallback">
+              PrepRoute
+            </span>
           </div>
 
           <h3 className="login-heading">Login</h3>
@@ -106,10 +114,31 @@ function Login() {
             Use your company provided Login credentials
           </p>
 
-          <form>
+          {/* DEMO ACCESS */}
+          <div className="demo-access-box">
+            <div className="demo-access-title">
+              🔐 Demo Access
+            </div>
 
+            <p>
+              <strong>User ID:</strong>{" "}
+              <span>portfolio-demo</span>
+            </p>
+
+            <p>
+              <strong>Password:</strong>{" "}
+              <span>PrepRoute@2026</span>
+            </p>
+
+            <small>
+              Use these credentials to explore the application.
+            </small>
+          </div>
+
+          <form>
             <div className="field-group">
               <label htmlFor="userId">User ID</label>
+
               <input
                 id="userId"
                 type="text"
@@ -121,6 +150,7 @@ function Login() {
 
             <div className="field-group">
               <label htmlFor="password">Password</label>
+
               <input
                 id="password"
                 type="password"
@@ -143,13 +173,18 @@ function Login() {
             >
               Login
             </button>
-
           </form>
 
+          {/* SECURITY NOTE */}
+          <div className="security-note">
+            <span>🔒</span>
+            <span>
+              Authentication-protected access
+            </span>
+          </div>
+
         </div>
-
       </div>
-
     </div>
   );
 }
