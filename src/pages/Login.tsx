@@ -36,9 +36,9 @@ function Login() {
 
       navigate("/dashboard");
     } catch (error) {
-      // Portfolio demo account
+      // preproute demo account
       if (
-        userId === "portfolio-demo" &&
+        userId === "preproute-demo" &&
         password === "PrepRoute@2026"
       ) {
         localStorage.setItem("token", "demo-jwt-token");
@@ -46,7 +46,7 @@ function Login() {
         localStorage.setItem(
           "user",
           JSON.stringify({
-            userId: "portfolio-demo",
+            userId: "preproute-demo",
             role: "demo"
           })
         );
@@ -122,7 +122,7 @@ function Login() {
 
             <p>
               <strong>User ID:</strong>{" "}
-              <span>portfolio-demo</span>
+              <span>preproute-demo</span>
             </p>
 
             <p>
